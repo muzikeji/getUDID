@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>GET UDID</title>
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+      
+  </script>
+</head>
+
+<body>
+  <h1>点击下方获取UDID按钮以获取设备UDID</h1>
+  
+  <h3>DEVICE_NAME: #(device_name)</h3>
+  <h3>UDID: #(udid)</h3>
+  <h3>IMEI: #(imei)</h3>
+  <h3>VERSION: #(version)</h3>
+  <h3>SERIAL: #(serial)</h3>
+  <h3>PRODUCT: #(product)</h3>
+  <h3>MAC_ADDRESS_EN0: #(mac_address)</h3>
+  
+  <div class="title-box">
+      <p><button class="btn-u btn-u-lg" style="border-radius: 4px;" onclick="getUDID();" id="getUDID">获取 UDID</button></p>
+  </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        #if(udid && serial):
+            console.log("#(udid)")
+            console.log("#(serial)")
+        #else:
+            console.log("No udid and serial was provided.")
+        #endif
+        
+    });
+
+    function getUDID() {
+        window.location.href = "/mobileconfig/udidSigned.mobileconfig";
+<!--        setTimeout(function() {-->
+<!--            window.location.href = "http://10.0.25.180:4443/mobileprovision/embedded.mobileprovision";-->
+<!--        }, 2000);-->
+    }
+</script>
+</html>

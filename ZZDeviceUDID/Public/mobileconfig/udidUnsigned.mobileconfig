@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadContent</key>
+        <dict>
+            <key>URL</key>
+            <string>http://10.0.25.180:4443/udid/receive</string> <!--接收数据的地址-->
+            <key>DeviceAttributes</key>
+            <array>
+                <string>DEVICE_NAME</string>
+                <string>UDID</string>
+                <string>IMEI</string>
+                <string>ICCID</string>
+                <string>VERSION</string>
+                <string>PRODUCT</string>
+                <string>SERIAL</string>
+                <string>MAC_ADDRESS_EN0</string>
+            </array>
+        </dict>
+        <key>PayloadOrganization</key>
+        <string>www.93lj.com</string>  <!--组织名称-->
+        <key>PayloadDisplayName</key>
+        <string>获取设备 UDID</string>  <!--安装时显示的标题-->
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadUUID</key>
+        <string>3C4DC7D2-E475-3375-489C-0BB8D737A653</string>  <!--自己随机填写的唯一字符串-->
+        <key>PayloadIdentifier</key>
+        <string>com.93lj.profile-service</string>
+        <key>PayloadDescription</key>
+        <string>本文件仅用来获取设备 ID</string>   <!--描述-->
+        <key>PayloadType</key>
+        <string>Profile Service</string>
+    </dict>
+</plist>
