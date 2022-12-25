@@ -34,7 +34,7 @@ iOS的Profile描述文件包含很多可以指定的设置，包括：
 
 ## 1 ｜ 通过Safari浏览器获取iOS设备UDID
 
-苹果公司允许开发者通过iOS设备和Web服务器之间的某个操作（其实就是MDM的获取设备信息功能），来获得iOS设备的UDID、SERIAL等，具体可以参考：[蒲公英｜一步快速获取 iOS 设备的 UDID](https://www.pgyer.com/tools/udid) 。获取步骤简要概述：
+苹果公司允许开发者通过iOS设备和Web服务器之间的某个操作（其实就是MDM的获取设备信息功能），来获得iOS设备的UDID、SERIAL等，具体可以参考：[木子科技｜一步快速获取 iOS 设备的 UDID](https://muvip.cn/udid) 。获取步骤简要概述：
 
 1. 在你的Web服务器上创建一个.mobileconfig的XML格式的描述文件；
 2. 用户在所有操作之前必须先通过某个点击操作完成.mobileconfig描述文件的下载和安装；
