@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ZZDeviceUDID",
+    name: "MUZIDeviceUDID",
     platforms: [
        .macOS(.v12)
     ],
