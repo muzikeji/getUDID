@@ -39,16 +39,30 @@ struct ZZUDIDController: RouteCollection {
 //            print(error)
 //        }
         
-        let deviceName = plistDict["DEVICE_NAME"] as? String
-        let udid = plistDict["UDID"] as? String
-        let imei = plistDict["IMEI"] as? String
-        let version = plistDict["VERSION"] as? String
-        let product = plistDict["PRODUCT"] as? String
-        let serial = plistDict["SERIAL"] as? String
-        let macAddress = plistDict["MAC_ADDRESS_EN0"] as? String
-        let target = "/udid?device_name=\(deviceName ?? "")&udid=\(udid ?? "")&imei=\(imei ?? "")&version=\(version ?? "")&product=\(product ?? "")&serial=\(serial ?? "")&mac_address=\(macAddress ?? "")"
+        let deviceName = plistDict["DEVICE_NAME"] as? String ?? ""
+        let udid = plistDict["UDID"] as? String ?? ""
+        let imei = plistDict["IMEI"] as? String ?? ""
+        let version = plistDict["VERSION"] as? String ?? ""
+        let product = plistDict["PRODUCT"] as? String ?? ""
+        let serial = plistDict["SERIAL"] as? String ?? ""
+        let macAddress = plistDict["MAC_ADDRESS_EN0"] as? String ?? ""
         
-        return req.redirect(to: target, type: .permanent)
+        if !udid.isEmpty {
+            if let existing = try await ZZDevice.query(on: req.db).filter(\.$udid == udid).first() {
+                existing.name = deviceName
+                existing.model = product
+                existing.serial = serial
+                try await existing.update(on: req.db)
+            } else {
+                let device = ZZDevice(name: deviceName, model: product, udid: udid, serial: serial)
+                try await device.save(on: req.db)
+            }
+        }
+        
+        let encode: (String) -> String = { $0.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? $0 }
+        let target = "/udid?device_name=\(encode(deviceName))&udid=\(encode(udid))&imei=\(encode(imei))&version=\(encode(version))&product=\(encode(product))&serial=\(encode(serial))&mac_address=\(encode(macAddress))"
+        
+        return req.redirect(to: target, type: .normal)
     }
     
 }

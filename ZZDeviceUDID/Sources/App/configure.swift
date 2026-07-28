@@ -10,7 +10,7 @@ public func configure(_ app: Application) throws {
     
     // Host and Port
     app.http.server.configuration.hostname = "0.0.0.0"
-    app.http.server.configuration.port = 4443
+    app.http.server.configuration.port = Environment.get("PORT").flatMap(Int.init(_:)) ?? 8080
     
     app.databases.use(.postgres(
         hostname: Environment.get("DATABASE_HOST") ?? "localhost",
